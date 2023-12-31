@@ -1,0 +1,148 @@
+body {
+
+    font-size: 20px;
+    text-align: center;
+    background-color: #abe8ce;
+    color: rgb(14, 14, 14);
+    /* height: 2200px; */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.level {
+    margin-bottom: 40px;
+    color: red;
+}
+
+.board-container {
+    display: flex;
+    justify-content: center;
+}
+
+td {
+    text-align: center;
+    font-size: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(69, 83, 75);
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.hint {
+    padding-right: 10%;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+
+.life {
+    font-size: 30px;
+    padding-left: 10%;
+    color: #af4c4c;
+}
+
+
+header,
+footer {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    color: white
+}
+
+main {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+
+header,
+footer {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    color: white
+}
+
+
+.button-52 {
+    font-size: 16px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 20px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-52:after {
+    content: "";
+    background-color: #ffe54c;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+    transition: 0.2s;
+}
+
+.button-52:hover:after {
+    top: 0px;
+    left: 0px;
+}
+
+@media (min-width: 768px) {
+    .button-52 {
+        padding: 13px 50px 13px;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 900px;
+}
+
+header {
+    background: url('http://www.autodatz.com/wp-content/uploads/2017/05/Old-Car-Wallpapers-Hd-36-with-Old-Car-Wallpapers-Hd.jpg');
+    text-align: center;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 85% 85% / 30%;
+}
+
+header .overlay {
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #333;
+    background-image: linear-gradient(135deg, #9f05ff69 10%, #fd5e086b 100%);
+
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 80px;
+    margin-bottom: 30px;
+}
