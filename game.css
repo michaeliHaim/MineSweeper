@@ -35,7 +35,7 @@ td {
 }
 
 .hint {
-    padding-right: 10%;
+    /* padding-right: 0%; */
     font-size: 30px;
     margin-bottom: 10px;
 }
@@ -43,9 +43,10 @@ td {
 
 .life {
     font-size: 30px;
-    padding-left: 10%;
+    /* padding-left: 10%; */
     color: #af4c4c;
 }
+
 
 
 header,
