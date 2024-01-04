@@ -6,6 +6,8 @@ const LIVE = '♥'
 const NORMAL = '😃'
 const LOSE = '🤯'
 const WIN = '😎'
+const FLAG = '🚩'
+
 var gBoard
 var gLives
 var timerInterval
@@ -13,14 +15,14 @@ var timerInterval
 var gLevel = {
     SIZE: 4,
     MINES: 2
-};
+}
+
 var gGame = {
     isOn: false,
     shownCount: 0,
     markedCount: 0,
     secsPassed: 0
 }
-
 
 function onInit() {
     
@@ -33,6 +35,8 @@ function onInit() {
     gGame.markedCount = 0
     gGame.secsPassed = 0
     gLives = 3
+    setInitialLives()
+    renderLives()
 }
 
 
@@ -40,7 +44,6 @@ function onInit() {
 function onCellClicked(elCell, i, j) {
     const cell = gBoard[i][j]
     
-
     if (!gGame.isOn) {
         // If the game is not started, set mines after the first click
         
@@ -50,7 +53,6 @@ function onCellClicked(elCell, i, j) {
         if (cell.isMine) {
             cell.isMine = false
             setMinesNegsCount(gBoard);
-            
         }
 
         if (!timerInterval) {
@@ -68,9 +70,11 @@ function onCellClicked(elCell, i, j) {
             if(gLives === 0){
                 var elMsg = document.querySelector('.modal');
                 elMsg.style.display = 'block'
-                gameOver()
+                
                 clearInterval(timerInterval)
                 revealAllMines(gBoard,i ,j)
+                resetGame()
+                gameOver()
             }
         } else {
             if (cell.minesAroundCount === 0) {
@@ -102,7 +106,7 @@ function onCellMarked(elCell,event) {
 }
 
 function getCellContent(cell) {
-    if (cell.isMarked) return '🚩'
+    if (cell.isMarked) return FLAG
     if (cell.isShown) {
         if (cell.isMine) {
             return MINE
@@ -116,19 +120,31 @@ function getCellContent(cell) {
     return FLOOR;
 }
 // check if the game end by cell
+
 function checkGameOver() {
-   
+    var isGameWon = true;
+
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[i].length; j++) {
-            const cell = gBoard[i][j]
+            const cell = gBoard[i][j];
 
             if (!(cell.isMine && cell.isMarked) && !(cell.isShown && !cell.isMine)) {
-                return
+                isGameWon = false;
+                break;
             }
         }
+        if (!isGameWon) {
+            break;
+        }
     }
-  
+
+    if (isGameWon) {
+        document.querySelector('.smiley-btn').innerText = WIN;
+    }
 }
+
+
+
 // count cell neighbor and avoid mines
 function expandShown (board, row, col) {
     for (var i = row - 1; i <= row + 1; i++) {
@@ -217,11 +233,26 @@ function renderLives(){
     elLive.innerText = LIVE.repeat(gLives)
 }
 
+function setInitialLives() {
+    gLives = (gLevel.SIZE === 4) ? 2 : 3;
+}
+
+
 // update game if its over
 function gameOver() {
+    document.querySelector('.smiley-btn').innerText = LOSE;
     gLives = 3
     onInit()
     renderLives()
+}
+
+function resetGame() {
+    clearInterval(timerInterval)
+    onInit()
+    hideGameOverModal()
+    updateTimerDisplay()
+    document.querySelector('.smiley-btn').innerText = NORMAL
+   
 }
 
 // update the game over

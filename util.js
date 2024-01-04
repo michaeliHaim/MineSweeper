@@ -44,6 +44,14 @@ function startTimer() {
     }, 1000);
 }
 
+function updateTimerDisplay() {
+    var minutes = Math.floor(gGame.secsPassed / 60);
+    var seconds = gGame.secsPassed % 60;
+    var formattedTime = (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+
+    document.getElementById('timer').innerText = 'Time: ' + formattedTime;
+}
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
