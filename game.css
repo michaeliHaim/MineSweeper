@@ -10,6 +10,48 @@ body {
 
 }
 
+.safe-click-btn {
+
+    margin: 5px;
+    padding: 8px;
+    position: fixed;
+    top: 10px;
+    left: 140px;
+    background-color: greenyellow;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+
+.dark-mode-btn {
+    background-color: #555;
+    color: #fff;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.undo-btn {
+    position: fixed;
+    top: 10px;
+    left: 70px;
+    background-color: greenyellow;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
 .level {
     margin-bottom: 40px;
     color: red;
@@ -29,12 +71,9 @@ td {
     border-radius: 5px;
 }
 
-.hidden {
-    display: none;
-}
 
 .hint {
-  
+
     font-size: 30px;
     margin-bottom: 10px;
 }
@@ -42,88 +81,70 @@ td {
 
 .life {
     font-size: 30px;
-   
+
     color: #af4c4c;
 }
 
 .hint-cell {
     user-select: none;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 
-/* <!-- HTML !-->
-<button class="button-54" role="button">Button 54</button> */
-
-/* CSS */
 .timer {
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #000;
-  cursor: pointer;
-  border: 3px solid;
-  padding: 0.25em 0.5em;
-  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3498db; /* A shade of blue, change as needed */
+    border: 10px solid #2980b9; /* Darker shade of blue for the border */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 685px; 
 }
-
-.timer:active {
-  box-shadow: 0px 0px 0px 0px;
-  top: 5px;
-  left: 5px;
-}
-
-@media (min-width: 768px) {
-  .timer {
-    padding: 0.25em 0.75em;
-  }
-}
-
 
 .smiley-btn {
-  align-self: center;
-  background-color: #fff;
-  background-image: none;
-  background-position: 0 90%;
-  background-repeat: repeat no-repeat;
-  background-size: 4px 3px;
-  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
-  border-style: solid;
-  border-width: 2px;
-  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
-  box-sizing: border-box;
-  color: #41403e;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Neucha, sans-serif;
-  font-size: 1rem;
-  line-height: 23px;
-  outline: none;
-  padding: .75rem;
-  text-decoration: none;
-  transition: all 235ms ease-in-out;
-  border-bottom-left-radius: 15px 255px;
-  border-bottom-right-radius: 225px 15px;
-  border-top-left-radius: 255px 15px;
-  border-top-right-radius: 15px 225px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+    align-self: center;
+    background-color: #fff;
+    background-image: none;
+    background-position: 0 90%;
+    background-repeat: repeat no-repeat;
+    background-size: 4px 3px;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: #41403e;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Neucha, sans-serif;
+    font-size: 1rem;
+    line-height: 23px;
+    outline: none;
+    padding: .75rem;
+    text-decoration: none;
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
 
 .smiley-btn:hover {
-  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
-  transform: translate3d(0, 2px, 0);
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+    transform: translate3d(0, 2px, 0);
 }
 
 .smiley-btn:focus {
-  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }
 
 
@@ -141,6 +162,7 @@ main {
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: auto;
+    font-size: 1px;
 }
 
 header,

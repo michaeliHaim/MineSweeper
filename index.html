@@ -12,39 +12,39 @@
 <body onload="onInit()">
     <header>
         <div class="overlay">
-    <h1>Mine Sweeper</h1>
-    
-    
-        <br>
-        <button class="button-52" onclick="setLevel(4, 2)">Beginner</button>
-        <button class="button-52" onclick="setLevel(8, 14)">Medium</button>
-        <button class="button-52" onclick="setLevel(12, 32)">Expert</button>
-        
-            </div>
-            
+            <h1>Mine Sweeper</h1>
+
+
+            <br>
+            <button class="button-52" onclick="setLevel(4, 2)">Beginner</button>
+            <button class="button-52" onclick="setLevel(8, 14)">Medium</button>
+            <button class="button-52" onclick="setLevel(12, 32)">Expert</button>
+
+        </div>
+
     </header>
-    
+    <button id="darkModeBtn" class="dark-mode-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <button class="undo-btn" onclick="undo()">UNDO</button>
     <div class="level-buttons" role="button">
 
     </div>
     <button class="smiley-btn" onclick="resetGame()">😃</button>
-   <div class="life">♥♥♥</div>
-   <div class="hint hint-cell" onclick="onHintClicked()">💡💡💡</div> 
-   <div id="timer">00:00</div>
+    <div class="life">♥♥♥</div>
+    <!-- <div class="hint hint-cell" onclick="onHintClicked()">💡💡💡</div> -->
+    <div class="timer">00:00</div>
     <div class="board-container"></div>
-    <div class="modal hidden">
-        <h2>Game Over</h2>
-    </div>
+    <button class="safe-click-btn" onclick="onSafeClick()">Safe Click</button>
 
     <script src="game.js"></script>
     <script src="util.js"></script>
-    
-  <main>
-    
-  </main>
-  <footer><h2>The project was created by Haim Michaeli</h2></footer>
-    
+
+    <main>
+
+    </main>
+    <footer>
+        <h2> © Haim Michaeli - Coding-Academy - 2024</h2>
+    </footer>
+
 </body>
 
 </html>
-
