@@ -50,13 +50,13 @@ function onInit() {
     renderLives()
     resetHints() 
     document.querySelector('.smiley-btn').innerText = NORMAL
+    updateTimerDisplay()
 }
 
 function resetHints() {
     cluesOpened = 0
     maxCluesReached = false
 }
-
 
 function onHintClicked() {
     if (cluesOpened < maxClues && !maxCluesReached) {
@@ -185,7 +185,7 @@ function onCellClicked(elCell, i, j) {
         // If the game is not started, set mines after the first click
         
         gGame.isOn = true;
-
+        startTimer()
         // Ensure the first clicked cell is not a mine
         if (cell.isMine) {
             cell.isMine = false
@@ -390,6 +390,7 @@ function gameOver() {
     revealMinesOnBoard(gBoard);
     gLives = 3
     renderLives()
+    updateTimerDisplay()
     
     // document.querySelector('.smiley-btn').innerText = NORMAL
 }
@@ -399,6 +400,8 @@ function isVictory() {
     clearInterval(timerInterval)
     onInit()
     renderLives()
+    updateTimerDisplay()
+    
 }
 
 function resetGame() {
@@ -406,6 +409,7 @@ function resetGame() {
     onInit()
     hideGameOverModal()
     updateTimerDisplay()
+   
     document.querySelector('.smiley-btn').innerText = NORMAL
 
 }
@@ -430,5 +434,3 @@ function startTimer() {
         updateTimerDisplay()
     }, 1000)
 }
-
-
