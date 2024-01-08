@@ -13,7 +13,9 @@ var gSafeClicks
 var gBoard
 var gLives
 var timerInterval
-
+var cluesOpened = 0
+var maxClues = 2
+var maxCluesReached = false
 
 var gLevel = {
     SIZE: 4,
@@ -43,13 +45,76 @@ function onInit() {
     gGame.secsPassed = 0
     gLives = 3
     gSafeClicks = 3
+    var maxClues = 2
     setInitialLives()
     renderLives()
-    
-    
+    resetHints() 
     document.querySelector('.smiley-btn').innerText = NORMAL
 }
 
+function resetHints() {
+    cluesOpened = 0
+    maxCluesReached = false
+}
+
+
+function onHintClicked() {
+    if (cluesOpened < maxClues && !maxCluesReached) {
+        var unrevealedCells = getUnrevealedCells(gBoard)
+        if (unrevealedCells.length > 0) {
+            var randomCell = unrevealedCells[getRandomInt(0, unrevealedCells.length - 1)]
+            var row = randomCell.row
+            var col = randomCell.col
+            if (!gBoard[row][col].isShown) {            
+                cluesOpened++
+                revealNeighborsForASecond(row, col)
+            }
+        }
+        if (cluesOpened === maxClues) {
+            maxCluesReached = true
+            console.log("Maximum number of hints reached.")
+        }
+    }
+}
+
+function revealNeighborsForASecond(row, col) {
+
+    for (var i = row - 1; i <= row + 1; i++) {
+        for (var j = col - 1; j <= col + 1; j++) {
+            if (i >= 0 && i < gBoard.length && j >= 0 && j < gBoard[0].length) {
+                const cell = gBoard[i][j]
+                cell.isShown = true
+            }
+        }
+    }
+    renderBoard(gBoard, '.board-container')
+    setTimeout(function () {
+        for (var i = row - 1; i <= row + 1; i++) {
+            for (var j = col - 1; j <= col + 1; j++) {
+                if (i >= 0 && i < gBoard.length && j >= 0 && j < gBoard[0].length) {
+                    const cell = gBoard[i][j]
+                    cell.isShown = false
+                }
+            }
+        }
+        cluesOpened--
+        renderBoard(gBoard, '.board-container')
+    }, 1000)
+}
+
+function getUnrevealedCells(board) {
+    var unrevealedCells = []
+    for (var i = 0; i < board.length; i++) {
+        for (var j = 0; j < board[0].length; j++) {
+            const cell = board[i][j];
+            if (!cell.isShown) {
+                unrevealedCells.push({ row: i, col: j })
+            }
+        }
+    }
+
+    return unrevealedCells
+}
 
 function onSafeClick() {
     if (gSafeClicks > 0) {
@@ -361,7 +426,7 @@ function updateTimerDisplay() {
 
 function startTimer() {
     timerInterval = setInterval(function () {
-        gGame.secsPassed++;
+        gGame.secsPassed++
         updateTimerDisplay()
     }, 1000)
 }

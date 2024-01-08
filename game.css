@@ -29,6 +29,10 @@ body.dark-mode {
     color: #fff;
 }
 
+body.dark-mode td{
+    background-color: #3498db;
+}
+
 
 .dark-mode-btn {
     background-color: #555;
